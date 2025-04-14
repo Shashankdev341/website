@@ -150,6 +150,45 @@
 	  </div>
 </body>
 <script>
+	 // ========== BACKGROUND MUSIC ==========
+    const bgMusic = document.createElement("audio");
+    bgMusic.src = "happy-birthday-314197.mp3"; // Replace with your own music file path
+    bgMusic.loop = true;
+    bgMusic.volume = 0.5;
+    document.body.appendChild(bgMusic);
+
+    // Start music on first click (required for autoplay on many browsers)
+    window.addEventListener("click", () => {
+        bgMusic.play().catch((e) => {
+            console.log("Autoplay failed:", e);
+        });
+    }, { once: true });
+
+    // Optional: Toggle button for music
+    const toggleButton = document.createElement("button");
+    toggleButton.textContent = "🎵 Music On/Off";
+    toggleButton.style.position = "fixed";
+    toggleButton.style.top = "20px";
+    toggleButton.style.right = "20px";
+    toggleButton.style.zIndex = "9999";
+    toggleButton.style.padding = "10px";
+    toggleButton.style.borderRadius = "10px";
+    toggleButton.style.border = "none";
+    toggleButton.style.backgroundColor = "#ff69b4";
+    toggleButton.style.color = "#fff";
+    toggleButton.style.cursor = "pointer";
+    document.body.appendChild(toggleButton);
+
+    let isPlaying = false;
+
+    toggleButton.addEventListener("click", () => {
+        if (isPlaying) {
+            bgMusic.pause();
+        } else {
+            bgMusic.play();
+        }
+        isPlaying = !isPlaying;
+    });
     let datetxt = "1st May 2025";
     let datatxtletter = "Happy birthday buddy !. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy. I always hope we will celebrate many more birthdays like this together. Happy birthday to you.💕";
     let titleLetter = "To you";
